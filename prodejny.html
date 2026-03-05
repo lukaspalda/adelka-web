@@ -15,7 +15,7 @@
     <meta property="og:site_name" content="Pekárna Adélka a.s.">
     <meta name="theme-color" content="#C49A2A">
 
-    <link rel="stylesheet" href="css/style.css?v=4">
+    <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
     <a class="skip-nav" href="#main">Přeskočit na obsah</a>
@@ -785,6 +785,20 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
     </button>
 
-    <script src="js/main.js?v=4"></script>
+    <!-- ═══ LIGHTBOX ═══ -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-label="Fotogalerie">
+        <button class="lightbox-close" aria-label="Zavřít">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <button class="lightbox-nav lightbox-prev" aria-label="Předchozí fotka">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <img src="" alt="">
+        <button class="lightbox-nav lightbox-next" aria-label="Další fotka">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+    </div>
+
+    <script src="js/main.js?v=5"></script>
 </body>
 </html>

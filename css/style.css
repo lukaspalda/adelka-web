@@ -747,6 +747,66 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     border-color: var(--primary);
 }
 
+/* -- Lightbox -- */
+.lightbox {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.92);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    cursor: zoom-out;
+}
+.lightbox.active {
+    opacity: 1; visibility: visible;
+}
+.lightbox img {
+    max-width: 90vw; max-height: 85vh;
+    border-radius: 12px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    transform: scale(0.92); opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: default;
+}
+.lightbox.active img {
+    transform: scale(1); opacity: 1;
+}
+.lightbox-close {
+    position: absolute; top: 20px; right: 24px;
+    width: 44px; height: 44px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+    color: #fff;
+}
+.lightbox-close:hover {
+    background: rgba(255,255,255,0.2);
+}
+.lightbox-close svg {
+    width: 20px; height: 20px;
+}
+.lightbox-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 48px; height: 48px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+    color: #fff;
+}
+.lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+.lightbox-nav svg { width: 22px; height: 22px; }
+
+@media (max-width: 480px) {
+    .lightbox-nav { width: 40px; height: 40px; }
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
+}
+
 /* -- Stores page responsive -- */
 @media (max-width: 768px) {
     .page-header { padding: 120px 0 40px; }

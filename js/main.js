@@ -117,4 +117,51 @@
         });
     });
 
+    // -- Lightbox --
+    var lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        var lbImg = lightbox.querySelector('img');
+        var galleryImages = [];
+        var currentIndex = 0;
+
+        document.querySelectorAll('.store-gallery img').forEach(function(img) {
+            img.addEventListener('click', function() {
+                galleryImages = Array.from(this.closest('.store-gallery').querySelectorAll('img'));
+                currentIndex = galleryImages.indexOf(this);
+                lbImg.src = this.src;
+                lbImg.alt = this.alt;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                updateNav();
+            });
+        });
+
+        function updateNav() {
+            lightbox.querySelector('.lightbox-prev').style.display = galleryImages.length > 1 ? '' : 'none';
+            lightbox.querySelector('.lightbox-next').style.display = galleryImages.length > 1 ? '' : 'none';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function navigate(dir) {
+            currentIndex = (currentIndex + dir + galleryImages.length) % galleryImages.length;
+            lbImg.src = galleryImages[currentIndex].src;
+            lbImg.alt = galleryImages[currentIndex].alt;
+        }
+
+        lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+        lightbox.querySelector('.lightbox-prev').addEventListener('click', function(e) { e.stopPropagation(); navigate(-1); });
+        lightbox.querySelector('.lightbox-next').addEventListener('click', function(e) { e.stopPropagation(); navigate(1); });
+        lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', function(e) {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigate(-1);
+            if (e.key === 'ArrowRight') navigate(1);
+        });
+    }
+
 })();
