@@ -106,4 +106,15 @@
         });
     }
 
+    // -- City Accordion (stores page) --
+    document.querySelectorAll('.city-header').forEach(function(header) {
+        header.addEventListener('click', function() {
+            var content = this.nextElementSibling;
+            var isActive = this.classList.contains('active');
+            this.classList.toggle('active');
+            content.classList.toggle('active');
+            this.setAttribute('aria-expanded', !isActive);
+        });
+    });
+
 })();
