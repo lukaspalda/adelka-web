@@ -15,7 +15,7 @@
     <meta property="og:site_name" content="Pekárna Adélka a.s.">
     <meta name="theme-color" content="#C49A2A">
 
-    <link rel="stylesheet" href="css/style.css?v=5">
+    <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
     <a class="skip-nav" href="#main">Přeskočit na obsah</a>
@@ -59,9 +59,66 @@
                 <p class="page-header-subtitle">Více než 30 značkových prodejen v&nbsp;kraji Vysočina a&nbsp;okolí</p>
             </div>
         </div>
+        <!-- Wavy divider -->
+        <svg class="page-header-wave" viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z" fill="var(--bg-warm)"/></svg>
     </section>
 
     <main id="main">
+        <!-- Floating flour particles -->
+        <div class="flour-particles" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <!-- Stats counter -->
+        <section class="stores-stats">
+            <div class="container">
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-number">30+</span>
+                        <span class="stat-label">prodejen</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">měst a obcí</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">35+</span>
+                        <span class="stat-label">let tradice</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wheat decoration -->
+        <div class="wheat-deco wheat-deco-left" aria-hidden="true">
+            <svg viewBox="0 0 80 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40 300 V30" stroke="var(--primary)" stroke-width="1.5" opacity="0.3"/>
+                <ellipse cx="40" cy="30" rx="8" ry="16" fill="var(--primary)" opacity="0.12" transform="rotate(-20 40 30)"/>
+                <ellipse cx="40" cy="30" rx="8" ry="16" fill="var(--primary)" opacity="0.12" transform="rotate(20 40 30)"/>
+                <ellipse cx="40" cy="60" rx="7" ry="14" fill="var(--primary)" opacity="0.10" transform="rotate(-25 40 60)"/>
+                <ellipse cx="40" cy="60" rx="7" ry="14" fill="var(--primary)" opacity="0.10" transform="rotate(25 40 60)"/>
+                <ellipse cx="40" cy="90" rx="6" ry="12" fill="var(--primary)" opacity="0.08" transform="rotate(-20 40 90)"/>
+                <ellipse cx="40" cy="90" rx="6" ry="12" fill="var(--primary)" opacity="0.08" transform="rotate(20 40 90)"/>
+                <ellipse cx="40" cy="120" rx="5" ry="10" fill="var(--primary)" opacity="0.06" transform="rotate(-15 40 120)"/>
+                <ellipse cx="40" cy="120" rx="5" ry="10" fill="var(--primary)" opacity="0.06" transform="rotate(15 40 120)"/>
+            </svg>
+        </div>
+        <div class="wheat-deco wheat-deco-right" aria-hidden="true">
+            <svg viewBox="0 0 80 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40 300 V30" stroke="var(--primary)" stroke-width="1.5" opacity="0.3"/>
+                <ellipse cx="40" cy="30" rx="8" ry="16" fill="var(--primary)" opacity="0.12" transform="rotate(-20 40 30)"/>
+                <ellipse cx="40" cy="30" rx="8" ry="16" fill="var(--primary)" opacity="0.12" transform="rotate(20 40 30)"/>
+                <ellipse cx="40" cy="60" rx="7" ry="14" fill="var(--primary)" opacity="0.10" transform="rotate(-25 40 60)"/>
+                <ellipse cx="40" cy="60" rx="7" ry="14" fill="var(--primary)" opacity="0.10" transform="rotate(25 40 60)"/>
+                <ellipse cx="40" cy="90" rx="6" ry="12" fill="var(--primary)" opacity="0.08" transform="rotate(-20 40 90)"/>
+                <ellipse cx="40" cy="90" rx="6" ry="12" fill="var(--primary)" opacity="0.08" transform="rotate(20 40 90)"/>
+                <ellipse cx="40" cy="120" rx="5" ry="10" fill="var(--primary)" opacity="0.06" transform="rotate(-15 40 120)"/>
+                <ellipse cx="40" cy="120" rx="5" ry="10" fill="var(--primary)" opacity="0.06" transform="rotate(15 40 120)"/>
+            </svg>
+        </div>
+
         <section class="section stores-page">
             <div class="container">
 
@@ -799,6 +856,6 @@
         </button>
     </div>
 
-    <script src="js/main.js?v=5"></script>
+    <script src="js/main.js?v=6"></script>
 </body>
 </html>

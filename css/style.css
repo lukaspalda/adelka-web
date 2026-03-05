@@ -1,5 +1,5 @@
-/* ADELKA DEMO v4 — WebZitra */
-/* Full-bleed hero, parallax, Google reviews, store photos, stores page */
+/* ADELKA DEMO v5 — WebZitra */
+/* Full-bleed hero, parallax, Google reviews, store photos, fancy stores page */
 
 /* -- CSS Custom Properties -- */
 :root {
@@ -604,13 +604,23 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 
 
 /* ═══════════════════════════════════════════════════
-   STORES PAGE — prodejny.html
+   STORES PAGE — prodejny.html (v5 — fancy edition)
    ═══════════════════════════════════════════════════ */
+
+/* -- Page background — warm gradient mesh -- */
+body:has(.stores-page) {
+    background:
+        radial-gradient(ellipse 600px 500px at 10% 20%, rgba(196,154,42,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 500px 600px at 90% 50%, rgba(196,154,42,0.05) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 400px at 50% 80%, rgba(196,154,42,0.04) 0%, transparent 70%),
+        radial-gradient(ellipse 300px 300px at 30% 60%, rgba(160,120,40,0.03) 0%, transparent 70%),
+        var(--bg-warm);
+}
 
 /* -- Page Header (mini hero for subpages) -- */
 .page-header {
     position: relative; overflow: hidden;
-    padding: 140px 0 60px; text-align: center;
+    padding: 160px 0 80px; text-align: center;
 }
 .page-header-bg {
     position: absolute; top: 0; left: 0; right: 0; bottom: 0;
@@ -620,7 +630,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 }
 .page-header-overlay {
     position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(160deg, rgba(42,31,20,0.92) 0%, rgba(42,31,20,0.7) 50%, rgba(42,31,20,0.5) 100%);
+    background: linear-gradient(160deg, rgba(42,31,20,0.94) 0%, rgba(42,31,20,0.75) 50%, rgba(42,31,20,0.55) 100%);
 }
 .page-header-content {
     position: relative; z-index: 2; color: #fff;
@@ -631,56 +641,155 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     margin-bottom: 20px; transition: color var(--transition);
 }
 .page-header-back:hover { color: #fff; }
+
+/* -- Golden shimmer title -- */
 .page-header-title {
-    font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700;
+    font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 700;
     letter-spacing: -0.02em; margin-bottom: 12px;
+    background: linear-gradient(
+        105deg,
+        #e8d5a0 0%, #C49A2A 20%, #f5e6b8 40%,
+        #C49A2A 60%, #e8d5a0 80%, #C49A2A 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s ease-in-out infinite;
 }
+@keyframes shimmer {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 200% center; }
+}
+
 .page-header-subtitle {
-    font-size: 1.1rem; color: rgba(255,255,255,0.7);
+    font-size: 1.15rem; color: rgba(255,255,255,0.7);
     max-width: 500px; margin: 0 auto;
+}
+
+/* -- Wavy divider -- */
+.page-header-wave {
+    position: absolute; bottom: -1px; left: 0; width: 100%;
+    height: 50px; display: block;
+    z-index: 3;
 }
 
 /* -- Active nav link -- */
 .nav-link-active { color: var(--primary) !important; font-weight: 600; }
 
-/* -- Stores page section -- */
-.stores-page { padding-top: 40px; }
-
-/* -- City Group (accordion) -- */
-.city-group {
-    border: 1px solid var(--border); border-radius: var(--radius);
-    margin-bottom: 16px; overflow: hidden;
-    background: var(--surface);
-    transition: box-shadow var(--transition);
+/* -- Stores Stats Counter -- */
+.stores-stats {
+    padding: 32px 0; background: var(--bg-warm);
 }
-.city-group:hover { box-shadow: var(--shadow-sm); }
+.stats-row {
+    display: flex; align-items: center; justify-content: center;
+    gap: 40px;
+}
+.stat-item { text-align: center; }
+.stat-number {
+    display: block; font-size: 2.2rem; font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -0.02em; line-height: 1.1;
+}
+.stat-label {
+    display: block; font-size: 0.85rem; color: var(--text-muted);
+    margin-top: 2px; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.stat-divider {
+    width: 1px; height: 40px;
+    background: linear-gradient(180deg, transparent, var(--primary), transparent);
+    opacity: 0.3;
+}
+
+/* -- Floating flour particles -- */
+.flour-particles {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 0; overflow: hidden;
+}
+.flour-particles span {
+    position: absolute;
+    width: 4px; height: 4px;
+    background: var(--primary);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float-up 12s linear infinite;
+}
+.flour-particles span:nth-child(1) { left: 8%; animation-delay: 0s; animation-duration: 14s; }
+.flour-particles span:nth-child(2) { left: 22%; animation-delay: 2s; animation-duration: 11s; width: 3px; height: 3px; }
+.flour-particles span:nth-child(3) { left: 38%; animation-delay: 4s; animation-duration: 16s; }
+.flour-particles span:nth-child(4) { left: 55%; animation-delay: 1s; animation-duration: 13s; width: 5px; height: 5px; }
+.flour-particles span:nth-child(5) { left: 70%; animation-delay: 3s; animation-duration: 15s; width: 3px; height: 3px; }
+.flour-particles span:nth-child(6) { left: 85%; animation-delay: 5s; animation-duration: 12s; }
+.flour-particles span:nth-child(7) { left: 45%; animation-delay: 7s; animation-duration: 14s; width: 2px; height: 2px; }
+.flour-particles span:nth-child(8) { left: 92%; animation-delay: 6s; animation-duration: 10s; width: 3px; height: 3px; }
+
+@keyframes float-up {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.15; }
+    50% { opacity: 0.08; }
+    90% { opacity: 0.12; }
+    100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+}
+
+/* -- Wheat decorations -- */
+.wheat-deco {
+    position: fixed; top: 15%; width: 60px;
+    pointer-events: none; z-index: 0; opacity: 0.5;
+}
+.wheat-deco-left { left: 20px; }
+.wheat-deco-right { right: 20px; transform: scaleX(-1); }
+
+/* -- Stores page section -- */
+.stores-page {
+    padding-top: 20px; position: relative; z-index: 1;
+}
+
+/* -- City Group (accordion) — fancy glass edition -- */
+.city-group {
+    border: 1px solid rgba(196,154,42,0.15);
+    border-left: 3px solid var(--primary);
+    border-radius: var(--radius);
+    margin-bottom: 20px; overflow: hidden;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all var(--transition);
+    box-shadow: 0 2px 12px rgba(42,31,20,0.04);
+}
+.city-group:hover {
+    box-shadow: 0 4px 24px rgba(196,154,42,0.1);
+    border-color: rgba(196,154,42,0.25);
+    transform: translateY(-1px);
+}
 
 .city-header {
     display: flex; align-items: center; justify-content: space-between;
-    width: 100%; padding: 20px 28px;
+    width: 100%; padding: 22px 28px;
     background: none; border: none; cursor: pointer;
     font-family: var(--font); text-align: left;
     transition: background var(--transition);
 }
-.city-header:hover { background: var(--bg-alt); }
-.city-header.active { background: var(--bg-alt); }
+.city-header:hover { background: rgba(196,154,42,0.04); }
+.city-header.active { background: rgba(196,154,42,0.06); }
 
 .city-header-info {
     display: flex; align-items: center; gap: 12px;
 }
 .city-icon { color: var(--primary); flex-shrink: 0; }
 .city-header h2 {
-    font-size: 1.2rem; font-weight: 700; color: var(--text);
+    font-size: 1.25rem; font-weight: 700; color: var(--text);
     margin: 0; line-height: 1.3;
 }
 .city-count {
-    font-size: 0.85rem; color: var(--text-muted);
-    background: var(--primary-light); padding: 3px 10px;
+    font-size: 0.8rem; color: var(--primary-dark); font-weight: 600;
+    background: linear-gradient(135deg, rgba(196,154,42,0.15), rgba(196,154,42,0.08));
+    padding: 4px 12px;
     border-radius: 20px; white-space: nowrap;
+    border: 1px solid rgba(196,154,42,0.15);
 }
 
 .city-chevron {
-    color: var(--text-muted); transition: transform 0.3s ease;
+    color: var(--primary); transition: transform 0.3s ease;
     flex-shrink: 0;
 }
 .city-header.active .city-chevron {
@@ -700,8 +809,10 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 /* -- Store Card -- */
 .store-card {
     padding: 24px 28px;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid rgba(196,154,42,0.1);
+    transition: background 0.2s;
 }
+.store-card:hover { background: rgba(196,154,42,0.02); }
 .store-card:last-child { padding-bottom: 28px; }
 
 .store-info h3 {
@@ -712,9 +823,11 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 
 .store-tag {
     display: inline-block; font-size: 0.7rem; font-weight: 600;
-    background: var(--primary); color: var(--text-on-primary);
-    padding: 2px 10px; border-radius: 20px; text-transform: uppercase;
+    background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+    color: #fff;
+    padding: 3px 12px; border-radius: 20px; text-transform: uppercase;
     letter-spacing: 0.04em;
+    box-shadow: 0 2px 8px rgba(196,154,42,0.3);
 }
 
 /* -- Store Details grid -- */
@@ -732,18 +845,22 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 .store-detail a { color: var(--primary); font-weight: 500; }
 .store-detail a:hover { text-decoration: underline; }
 
-/* -- Store Gallery -- */
+/* -- Store Gallery — enhanced -- */
 .store-gallery {
     display: flex; gap: 12px; margin-top: 16px;
     flex-wrap: wrap;
 }
 .store-gallery img {
     width: 200px; height: 140px; object-fit: cover;
-    border-radius: 10px; border: 1px solid var(--border);
-    transition: all var(--transition); cursor: pointer;
+    border-radius: 12px;
+    border: 2px solid rgba(196,154,42,0.12);
+    transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(42,31,20,0.06);
 }
 .store-gallery img:hover {
-    transform: scale(1.03); box-shadow: var(--shadow-md);
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 8px 28px rgba(196,154,42,0.2);
     border-color: var(--primary);
 }
 
@@ -808,19 +925,32 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 }
 
 /* -- Stores page responsive -- */
+@media (max-width: 1024px) {
+    .wheat-deco { display: none; }
+}
 @media (max-width: 768px) {
-    .page-header { padding: 120px 0 40px; }
+    .page-header { padding: 130px 0 60px; }
     .page-header-title { font-size: 2rem; }
+    .page-header-wave { height: 30px; }
+    .stats-row { gap: 24px; }
+    .stat-number { font-size: 1.8rem; }
     .city-header { padding: 16px 20px; }
     .city-header h2 { font-size: 1.05rem; }
+    .city-group { border-left-width: 2px; }
     .store-card { padding: 20px; }
     .store-gallery img { width: 150px; height: 110px; }
 }
 
 @media (max-width: 480px) {
-    .page-header { padding: 110px 0 32px; }
+    .page-header { padding: 110px 0 50px; }
+    .page-header-wave { height: 20px; }
+    .stats-row { gap: 16px; flex-wrap: wrap; }
+    .stat-divider { height: 24px; }
+    .stat-number { font-size: 1.5rem; }
+    .stat-label { font-size: 0.75rem; }
     .city-header-info { gap: 8px; }
     .city-count { font-size: 0.75rem; padding: 2px 8px; }
     .store-gallery { gap: 8px; }
     .store-gallery img { width: calc(50% - 4px); height: 100px; }
+    .flour-particles { display: none; }
 }
