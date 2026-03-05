@@ -106,6 +106,50 @@
         });
     }
 
+    // -- Animated Counter --
+    var counterElements = document.querySelectorAll('.stat-number[data-count]');
+    if (counterElements.length > 0 && 'IntersectionObserver' in window) {
+        var counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    var el = entry.target;
+                    var target = parseInt(el.getAttribute('data-count'), 10);
+                    var duration = 2000;
+                    var start = 0;
+                    var startTime = null;
+                    function step(timestamp) {
+                        if (!startTime) startTime = timestamp;
+                        var progress = Math.min((timestamp - startTime) / duration, 1);
+                        // Ease-out cubic
+                        var eased = 1 - Math.pow(1 - progress, 3);
+                        var current = Math.floor(eased * target);
+                        el.textContent = current + '+';
+                        if (progress < 1) {
+                            requestAnimationFrame(step);
+                        } else {
+                            el.textContent = target + '+';
+                        }
+                    }
+                    requestAnimationFrame(step);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        counterElements.forEach(function(el) { counterObserver.observe(el); });
+    }
+
+    // -- Subtle Hero Parallax --
+    var heroBg = document.querySelector('.hero-bg img');
+    if (heroBg) {
+        window.addEventListener('scroll', function() {
+            var scrolled = window.scrollY;
+            if (scrolled < window.innerHeight) {
+                heroBg.style.transform = 'translateY(' + (scrolled * 0.3) + 'px) scale(1.1)';
+            }
+        }, { passive: true });
+        heroBg.style.transform = 'scale(1.1)';
+    }
+
     // -- City Accordion (stores page) --
     document.querySelectorAll('.city-header').forEach(function(header) {
         header.addEventListener('click', function() {

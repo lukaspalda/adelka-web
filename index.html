@@ -39,9 +39,14 @@
     }
     </script>
 
-    <link rel="stylesheet" href="css/style.css?v=4">
+    <link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body>
+    <!-- Floating flour particles -->
+    <div class="index-particles" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
     <a class="skip-nav" href="#main">Přeskočit na obsah</a>
 
     <!-- ═══ NAVBAR ═══ -->
@@ -102,6 +107,11 @@
         </div>
     </section>
 
+    <!-- Wavy divider: hero → o nás -->
+    <svg class="section-wave" viewBox="0 0 1440 50" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,25 C240,50 480,0 720,25 C960,50 1200,0 1440,25 L1440,50 L0,50 Z" fill="var(--bg-alt)"/>
+    </svg>
+
     <main id="main">
         <!-- ═══ O NÁS ═══ -->
         <section class="section" id="o-nas">
@@ -122,24 +132,29 @@
 
                 <div class="stats-grid" data-animate>
                     <div class="stat-card">
-                        <span class="stat-number">35+</span>
+                        <span class="stat-number" data-count="35">0</span>
                         <span class="stat-label">Let tradice</span>
                     </div>
                     <div class="stat-card">
-                        <span class="stat-number">1000+</span>
+                        <span class="stat-number" data-count="1000">0</span>
                         <span class="stat-label">Druhů výrobků</span>
                     </div>
                     <div class="stat-card">
-                        <span class="stat-number">300+</span>
+                        <span class="stat-number" data-count="300">0</span>
                         <span class="stat-label">Zaměstnanců</span>
                     </div>
                     <div class="stat-card">
-                        <span class="stat-number">30+</span>
+                        <span class="stat-number" data-count="30">0</span>
                         <span class="stat-label">Prodejen v&nbsp;regionu</span>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Wavy divider: o nás → divize -->
+        <svg class="section-wave section-wave-dark" viewBox="0 0 1440 50" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,0 C360,50 720,0 1080,40 C1260,50 1380,10 1440,0 L1440,50 L0,50 Z" fill="var(--bg-dark)"/>
+        </svg>
 
         <!-- ═══ DIVIZE ═══ -->
         <section class="section section-dark" id="divize">
@@ -200,6 +215,11 @@
                 </div>
             </div>
         </section>
+
+        <!-- Wavy divider: divize → parallax -->
+        <svg class="section-wave" viewBox="0 0 1440 50" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,25 C180,0 360,50 540,25 C720,0 900,50 1080,25 C1260,0 1440,35 1440,25 L1440,50 L0,50 Z" fill="var(--bg)"/>
+        </svg>
 
         <!-- ═══ PARALLAX BANNER ═══ -->
         <section class="parallax-banner">
@@ -319,6 +339,11 @@
             </div>
         </section>
 
+        <!-- Wavy divider: produkty → ocenění -->
+        <svg class="section-wave section-wave-dark" viewBox="0 0 1440 50" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,10 C240,50 480,0 720,30 C960,50 1200,10 1440,20 L1440,50 L0,50 Z" fill="var(--bg-dark)"/>
+        </svg>
+
         <!-- ═══ OCENĚNÍ ═══ -->
         <section class="section section-dark" id="oceneni">
             <div class="container">
@@ -364,6 +389,11 @@
                 </div>
             </div>
         </section>
+
+        <!-- Wavy divider: ocenění → recenze -->
+        <svg class="section-wave" viewBox="0 0 1440 50" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,30 C320,0 640,50 960,20 C1120,10 1300,40 1440,25 L1440,50 L0,50 Z" fill="var(--bg)"/>
+        </svg>
 
         <!-- ═══ GOOGLE RECENZE ═══ -->
         <section class="section" id="recenze">
@@ -541,6 +571,11 @@
             </div>
         </section>
 
+        <!-- Wavy divider: prodejny → kontakt -->
+        <svg class="section-wave section-wave-dark" viewBox="0 0 1440 50" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,20 C200,50 400,0 600,30 C800,50 1000,10 1200,30 C1340,40 1400,15 1440,20 L1440,50 L0,50 Z" fill="var(--bg-dark)"/>
+        </svg>
+
         <!-- ═══ KONTAKT ═══ -->
         <section class="section section-dark" id="kontakt">
             <div class="container">
@@ -686,6 +721,6 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
     </button>
 
-    <script src="js/main.js?v=4"></script>
+    <script src="js/main.js?v=7"></script>
 </body>
 </html>
